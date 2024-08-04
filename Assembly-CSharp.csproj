@@ -10,7 +10,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{9B9BEAB5-9562-0A91-840F-19947E1F720A}</ProjectGuid>
+    <ProjectGuid>{458B7AD0-5505-00C6-1AB6-A2FB9607B176}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -60,7 +60,40 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.13f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Script\ProceduralTerrain\BlockHelper.cs" />
+    <Compile Include="Assets\Script\ProceduralTerrain\BlockDataManager.cs" />
+    <Compile Include="Assets\Script\ProceduralTerrain\MyNoise.cs" />
+    <Compile Include="Assets\Script\ProceduralTerrain\BlockDataSO.cs" />
+    <Compile Include="Assets\Script\ProceduralTerrain\BlockLayers\WaterLayerHandler.cs" />
+    <Compile Include="Assets\Script\ProceduralTerrain\GameManager.cs" />
+    <Compile Include="Assets\Script\ProceduralTerrain\BlockLayers\AirLayerHandler.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
+    <Compile Include="Assets\FirstPersonCamera.cs" />
+    <Compile Include="Assets\Script\ProceduralTerrain\BlockType.cs" />
+    <Compile Include="Assets\Script\ProceduralTerrain\DirectionExtensions.cs" />
+    <Compile Include="Assets\Script\ProceduralTerrain\BlockLayers\BlockLayerHandler.cs" />
+    <Compile Include="Assets\Script\ProceduralTerrain\World.cs" />
+    <Compile Include="Assets\Script\ProceduralTerrain\Chunk.cs" />
+    <Compile Include="Assets\Script\ProceduralTerrain\DomainWarping.cs" />
+    <Compile Include="Assets\Script\ProceduralTerrain\Direction.cs" />
+    <Compile Include="Assets\Script\ProceduralTerrain\TerrainGenerator.cs" />
+    <Compile Include="Assets\Script\ProceduralTerrain\WorldDataHelper.cs" />
+    <Compile Include="Assets\Script\PlayerMovementAdvanced.cs" />
+    <Compile Include="Assets\Script\ProceduralTerrain\ChunkRenderer.cs" />
+    <Compile Include="Assets\Script\ProceduralTerrain\BlockLayers\StoneLayerHandler.cs" />
+    <Compile Include="Assets\Script\ProceduralTerrain\ChunkData.cs" />
+    <Compile Include="Assets\Script\ProceduralTerrain\MeshData.cs" />
+    <Compile Include="Assets\Script\ProceduralTerrain\BlockLayers\UndergroundLayerHandler.cs" />
+    <Compile Include="Assets\Script\ProceduralTerrain\BiomeGenerator.cs" />
+    <Compile Include="Assets\Script\ProceduralTerrain\BlockLayers\SurfaceLayerHandler.cs" />
+    <Compile Include="Assets\Script\ProceduralTerrain\NoiseSettings.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\_Textures\Kenny Assets Voxel pack\Spritesheets\spritesheet_characters.xml" />
+    <None Include="Assets\_Textures\Kenny Assets Voxel pack\Spritesheets\spritesheet_particles.xml" />
+    <None Include="Assets\_Textures\Kenny Assets Voxel pack\Spritesheets\spritesheet_tiles.xml" />
+    <None Include="Assets\_Textures\Kenny Assets Voxel pack\License.txt" />
+    <None Include="Assets\_Textures\Kenny Assets Voxel pack\Spritesheets\spritesheet_items.xml" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -915,6 +948,10 @@
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="com.unity.cinemachine.editor">
+      <HintPath>Library\ScriptAssemblies\com.unity.cinemachine.editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.AI.Navigation">
       <HintPath>Library\ScriptAssemblies\Unity.AI.Navigation.dll</HintPath>
       <Private>False</Private>
@@ -1133,6 +1170,10 @@
     </Reference>
     <Reference Include="Unity.VisualScripting.State">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Cinemachine">
+      <HintPath>Library\ScriptAssemblies\Cinemachine.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.2D.Tilemap.Editor">
