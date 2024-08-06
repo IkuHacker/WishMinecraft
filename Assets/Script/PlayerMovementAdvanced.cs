@@ -15,10 +15,18 @@ public class PlayerMovementAdvanced : MonoBehaviour
     public Camera cameraMain;
 
     [Header("Jumping")]
-    public float jumpForce;
-    public float jumpCooldown;
+    public float jumpHeight = 1.0f;
+    public bool isJumping;
     public float airMultiplier;
-    bool readyToJump;
+
+
+    [Header("Grounded check parameters:")]
+    [SerializeField]
+    private LayerMask groundMask;
+    [SerializeField]
+    private float rayDistance = 1;
+    [field: SerializeField]
+    public bool IsGrounded { get; private set; }
 
     [Header("Crouching")]
     public float crouchSpeed;
@@ -41,6 +49,7 @@ public class PlayerMovementAdvanced : MonoBehaviour
     float verticalInput;
 
     Vector3 moveDirection;
+    [SerializeField]
 
     Rigidbody rb;
 
@@ -58,8 +67,6 @@ public class PlayerMovementAdvanced : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
 
-        readyToJump = true;
-
         startYScale = transform.localScale.y;
 
         cameraMain.fieldOfView = baseFOV;
@@ -72,15 +79,13 @@ public class PlayerMovementAdvanced : MonoBehaviour
         SpeedControl();
         StateHandler();
 
-        // handle drag
-        if (grounded)
-            rb.drag = groundDrag;
-        else
-            rb.drag = 0;
+        IsGrounded = Physics.Raycast(transform.position, Vector3.down, rayDistance, groundMask);
 
         // Handle FOV transition
         float targetFOV = (state == MovementState.sprinting && horizontalInput != 0f || state == MovementState.sprinting && verticalInput != 0f) ? sprintFOV : baseFOV;
         cameraMain.fieldOfView = Mathf.Lerp(cameraMain.fieldOfView, targetFOV, FOVTransitionSpeed * Time.deltaTime);
+
+
     }
 
     private void FixedUpdate()
@@ -94,12 +99,7 @@ public class PlayerMovementAdvanced : MonoBehaviour
         verticalInput = Input.GetAxisRaw("Vertical");
 
         // when to jump
-        if (Input.GetKey(jumpKey) && readyToJump && grounded)
-        {
-            readyToJump = false;
-            Jump();
-            Invoke(nameof(ResetJump), jumpCooldown);
-        }
+        isJumping = Input.GetKey(jumpKey);
 
         // start crouch
         if (Input.GetKeyDown(crouchKey))
@@ -151,12 +151,18 @@ public class PlayerMovementAdvanced : MonoBehaviour
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
         // on ground
-        if (grounded)
+        if (isJumping && IsGrounded)
+            AddJumpForce();
+
+
+        if (IsGrounded)
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
 
         // in air
-        else if (!grounded)
+        else if (!IsGrounded)
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
+
+
     }
 
     private void SpeedControl()
@@ -172,19 +178,19 @@ public class PlayerMovementAdvanced : MonoBehaviour
         }
     }
 
-    private void Jump()
-    {
-        // reset y velocity
-        rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+  
 
-        rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+    private void AddJumpForce()
+    {
+        rb.AddForce(new Vector3(0, jumpHeight, 0), ForceMode.Impulse);
     }
 
-    private void ResetJump()
-    {
-        readyToJump = true;
-    }
+    
 
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawRay(transform.position, Vector3.down * rayDistance);
+    }
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.transform.CompareTag("Ground"))
