@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 659e71c10a9785e4ca6610234b347e2c, type: 3}
   m_Name: BiomeNoiseTemperatureSettings
   m_EditorClassIdentifier: 
-  noiseZoom: 0.02
+  noiseZoom: 0.05
   octaves: 1
-  offest: {x: 20, y: 20}
-  worldOffset: {x: 70, y: 824}
-  persistance: 1
-  redistributionModifier: 1
-  exponent: 2
+  offest: {x: 50, y: 50}
+  worldOffset: {x: 25, y: 75}
+  persistance: 0.5
+  redistributionModifier: 1.2
+  exponent: 5

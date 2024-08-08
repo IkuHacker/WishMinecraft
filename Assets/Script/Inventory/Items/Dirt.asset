@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c4fc419278e180469a82c114e2875f7, type: 3}
+  m_Name: Dirt
+  m_EditorClassIdentifier: 
+  itemName: Dirt
+  description: A block
+  visual: {fileID: 1132625043, guid: b1eb15da7f658084d9084601d942812e, type: 3}
+  isABlock: 1
+  blocs: 4
+  stackable: 1
+  maxStack: 64

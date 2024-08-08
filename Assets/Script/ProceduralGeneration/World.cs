@@ -19,7 +19,7 @@ public class World : MonoBehaviour
 
     public TerrainGenerator terrainGenerator;
     public Vector2Int mapSeedOffset;
-
+    public BlockType currentBlockMine;
     CancellationTokenSource taskTokenSource = new CancellationTokenSource();
 
 
@@ -30,7 +30,7 @@ public class World : MonoBehaviour
 
     public WorldData worldData { get; private set; }
     public bool IsWorldCreated { get; private set; }
-
+    
     private void Awake()
     {
         worldData = new WorldData
@@ -66,17 +66,10 @@ public class World : MonoBehaviour
 
         ConcurrentDictionary<Vector3Int, ChunkData> dataDictionary = null;
 
-        try
-        {
-            dataDictionary = await CalculateWorldChunkData(worldGenerationData.chunkDataPositionsToCreate);
-        }
-        catch (Exception)
-        {
-            Debug.Log("Task canceled");
-            return;
-        }
-
-
+        
+         dataDictionary = await CalculateWorldChunkData(worldGenerationData.chunkDataPositionsToCreate);
+        
+     
         foreach (var calculatedData in dataDictionary)
         {
             worldData.chunkDataDictionary.Add(calculatedData.Key, calculatedData.Value);
@@ -159,8 +152,10 @@ public class World : MonoBehaviour
         }
         if (IsWorldCreated == false)
         {
+            Debug.Log("World create");
             IsWorldCreated = true;
             OnWorldCreated?.Invoke();
+            
         }
     }
 

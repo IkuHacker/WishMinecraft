@@ -15,7 +15,7 @@ MonoBehaviour:
   noiseZoom: 0.01
   octaves: 5
   offest: {x: -100, y: 3400}
-  worldOffset: {x: 70, y: 824}
-  persistance: 0.5
+  worldOffset: {x: 25, y: 75}
+  persistance: 0.1
   redistributionModifier: 1.2
-  exponent: 1
+  exponent: 0.5

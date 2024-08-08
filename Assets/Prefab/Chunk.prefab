@@ -121,3 +121,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   showGizmo: 0
+  ChunkData:
+    blocks: 
+    chunkSize: 0
+    chunkHeight: 0
+    worldReference: {fileID: 0}
+    worldPosition: {x: 0, y: 0, z: 0}
+    modifiedByThePlayer: 0

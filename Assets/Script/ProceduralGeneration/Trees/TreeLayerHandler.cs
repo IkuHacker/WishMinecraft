@@ -6,6 +6,8 @@ public class TreeLayerHandler : BlockLayerHandler
 {
     public float terrainHeightLimit = 25;
     public BlockType treeblock;
+    public BlockType surfaceBlock;
+
 
     public static List<Vector3Int> treeLeafesStaticLayout = new List<Vector3Int>
     {
@@ -55,7 +57,7 @@ public class TreeLayerHandler : BlockLayerHandler
         {
             Vector3Int chunkCoordinates = new Vector3Int(x, surfaceHeightNoise, z);
             BlockType type = Chunk.GetBlockFromChunkCoordinates(chunkData, chunkCoordinates);
-            if (type == BlockType.Grass_Dirt)
+            if (type == surfaceBlock)
             {
                 
                 Chunk.SetBlock(chunkData, chunkCoordinates, BlockType.Dirt);

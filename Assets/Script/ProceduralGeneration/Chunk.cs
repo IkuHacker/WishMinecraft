@@ -61,6 +61,7 @@ public static class Chunk
         if (InRange(chunkData, localPosition.x) && InRangeHeight(chunkData, localPosition.y) && InRange(chunkData, localPosition.z))
         {
             int index = GetIndexFromPosition(chunkData, localPosition.x, localPosition.y, localPosition.z);
+            chunkData.worldReference.currentBlockMine = chunkData.blocks[index];
             chunkData.blocks[index] = block;
         }
         else
