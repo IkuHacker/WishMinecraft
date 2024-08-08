@@ -15,12 +15,26 @@ public class BiomeGenerator : MonoBehaviour
 
     public BlockLayerHandler startLayerHandler;
 
+    public TreeGenerator treeGenerator;
+
+    internal TreeData GetTreeData(ChunkData data, Vector2Int mapSeedOffset)
+    {
+        if (treeGenerator == null)
+            return new TreeData();
+        return treeGenerator.GenerateTreeData(data, mapSeedOffset);
+    }
+
     public List<BlockLayerHandler> additionalLayerHandlers;
 
-    public ChunkData ProcessChunkColumn(ChunkData data, int x, int z, Vector2Int mapSeedOffset)
+    public ChunkData ProcessChunkColumn(ChunkData data, int x, int z, Vector2Int mapSeedOffset, int? terrainHeightNoise)
     {
         biomeNoiseSettings.worldOffset = mapSeedOffset;
-        int groundPosition = GetSurfaceHeightNoise(data.worldPosition.x + x, data.worldPosition.z + z, data.chunkHeight);
+
+        int groundPosition;
+        if (terrainHeightNoise.HasValue == false)
+            groundPosition = GetSurfaceHeightNoise(data.worldPosition.x + x, data.worldPosition.z + z, data.chunkHeight);
+        else
+            groundPosition = terrainHeightNoise.Value;
 
         for (int y = data.worldPosition.y; y < data.worldPosition.y + data.chunkHeight; y++)
         {
@@ -34,10 +48,10 @@ public class BiomeGenerator : MonoBehaviour
         return data;
     }
 
-    private int GetSurfaceHeightNoise(int x, int z, int chunkHeight)
+    public int GetSurfaceHeightNoise(int x, int z, int chunkHeight)
     {
         float terrainHeight;
-        if(useDomainWarping == false)
+        if (useDomainWarping == false)
         {
             terrainHeight = MyNoise.OctavePerlin(x, z, biomeNoiseSettings);
         }

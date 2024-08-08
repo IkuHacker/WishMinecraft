@@ -339,7 +339,7 @@ MonoBehaviour:
   sprintFOV: 85
   FOVTransitionSpeed: 10
   cameraMain: {fileID: 7806058668290831662}
-  jumpHeight: 1
+  jumpHeight: 0.5
   isJumping: 0
   airMultiplier: 1
   groundMask:
@@ -357,7 +357,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   orientation: {fileID: 9217715150847458652}
-  gravityValue: -9.81
+  rb: {fileID: 0}
   state: 0
 --- !u!54 &3114290947079815930
 Rigidbody:
@@ -404,6 +404,7 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 64
+  inventory: {fileID: 0}
   world: {fileID: 0}
 --- !u!1 &8385439055219470911
 GameObject:

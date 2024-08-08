@@ -5,6 +5,7 @@ using UnityEngine;
 public class SurfaceLayerHandler : BlockLayerHandler
 {
     public BlockType surfaceBlockType;
+
     protected override bool TryHandling(ChunkData chunkData, int x, int y, int z, int surfaceHeightNoise, Vector2Int mapSeedOffset)
     {
         if (y == surfaceHeightNoise)

@@ -60,24 +60,30 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.13f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Script\ProceduralGeneration\Trees\TreeLayerHandler.cs" />
     <Compile Include="Assets\Script\ProceduralGeneration\TerrainGenerator.cs" />
     <Compile Include="Assets\Script\ProceduralGeneration\BlockLayers\AirLayerHandler.cs" />
+    <Compile Include="Assets\Script\ProceduralGeneration\BiomeCenterFinder.cs" />
     <Compile Include="Assets\Script\ProceduralGeneration\BlockHelper.cs" />
     <Compile Include="Assets\Script\ProceduralGeneration\Chunk.cs" />
+    <Compile Include="Assets\Script\Inventory.cs" />
     <Compile Include="Assets\Script\ProceduralGeneration\MyNoise.cs" />
     <Compile Include="Assets\Script\ProceduralGeneration\Direction.cs" />
     <Compile Include="Assets\Script\ProceduralGeneration\BlockDataSO.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
+    <Compile Include="Assets\Script\ProceduralGeneration\WorldRenderer.cs" />
+    <Compile Include="Assets\Script\Slot.cs" />
     <Compile Include="Assets\Script\ProceduralGeneration\BlockLayers\SurfaceLayerHandler.cs" />
     <Compile Include="Assets\Script\ProceduralGeneration\DomainWarping.cs" />
-    <Compile Include="Assets\FirstPersonCamera.cs" />
     <Compile Include="Assets\Script\ProceduralGeneration\BlockLayers\UndergroundLayerHandler.cs" />
-    <Compile Include="Assets\Slot.cs" />
-    <Compile Include="Assets\PlayerMineBuild.cs" />
+    <Compile Include="Assets\Script\ProceduralGeneration\Trees\TreeGenerator.cs" />
+    <Compile Include="Assets\Script\PlayerMineBuild.cs" />
     <Compile Include="Assets\Script\ProceduralGeneration\Player\PlayerMovement.cs" />
+    <Compile Include="Assets\Script\ProceduralGeneration\Trees\DataPorocessing.cs" />
     <Compile Include="Assets\Script\ProceduralGeneration\Player\GameManager.cs" />
     <Compile Include="Assets\Script\ProceduralGeneration\World.cs" />
     <Compile Include="Assets\Script\ProceduralGeneration\BlockDataManager.cs" />
+    <Compile Include="Assets\Script\FirstPersonCamera.cs" />
     <Compile Include="Assets\Script\ProceduralGeneration\NoiseSettings.cs" />
     <Compile Include="Assets\Script\ProceduralGeneration\Player\PlayerCamera.cs" />
     <Compile Include="Assets\Script\ProceduralGeneration\ChunkRenderer.cs" />
@@ -86,17 +92,17 @@
     <Compile Include="Assets\Script\ProceduralGeneration\BlockType.cs" />
     <Compile Include="Assets\Script\ProceduralGeneration\Player\PlayerInput.cs" />
     <Compile Include="Assets\Script\PlayerMovementAdvanced.cs" />
+    <Compile Include="Assets\Script\StoneLayer.cs" />
     <Compile Include="Assets\Script\ProceduralGeneration\BlockLayers\BedrockLayerHandler.cs" />
     <Compile Include="Assets\Script\ProceduralGeneration\BiomeGenerator.cs" />
-    <Compile Include="Assets\Inventory.cs" />
     <Compile Include="Assets\Script\ProceduralGeneration\ChunkData.cs" />
     <Compile Include="Assets\Script\Items\ItemData.cs" />
-    <Compile Include="Assets\StoneLayer.cs" />
     <Compile Include="Assets\Script\ProceduralGeneration\WorldDataHelper.cs" />
     <Compile Include="Assets\Script\ProceduralGeneration\BlockLayers\StoneLayerHandler.cs" />
     <Compile Include="Assets\Script\ProceduralGeneration\DirectionExtensions.cs" />
     <Compile Include="Assets\Script\ProceduralGeneration\MeshData.cs" />
     <Compile Include="Assets\Script\ProceduralGeneration\Player\Character.cs" />
+    <Compile Include="Assets\Script\ProceduralGeneration\Trees\TreeData.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\_Textures\Kenny Assets Voxel pack\Spritesheets\spritesheet_characters.xml" />

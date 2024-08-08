@@ -11,8 +11,7 @@ public class ChunkRenderer : MonoBehaviour
     MeshCollider meshCollider;
     Mesh mesh;
     public bool showGizmo = false;
-
-    public ChunkData ChunkData { get; private set; }
+    public ChunkData ChunkData;
 
     public bool ModifiedByThePlayer
     {
