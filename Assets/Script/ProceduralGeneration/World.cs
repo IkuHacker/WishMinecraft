@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -30,7 +29,7 @@ public class World : MonoBehaviour
 
     public WorldData worldData { get; private set; }
     public bool IsWorldCreated { get; private set; }
-    
+
     private void Awake()
     {
         worldData = new WorldData
@@ -66,10 +65,10 @@ public class World : MonoBehaviour
 
         ConcurrentDictionary<Vector3Int, ChunkData> dataDictionary = null;
 
-        
-         dataDictionary = await CalculateWorldChunkData(worldGenerationData.chunkDataPositionsToCreate);
-        
-     
+
+        dataDictionary = await CalculateWorldChunkData(worldGenerationData.chunkDataPositionsToCreate);
+
+
         foreach (var calculatedData in dataDictionary)
         {
             worldData.chunkDataDictionary.Add(calculatedData.Key, calculatedData.Value);
@@ -155,7 +154,7 @@ public class World : MonoBehaviour
             Debug.Log("World create");
             IsWorldCreated = true;
             OnWorldCreated?.Invoke();
-            
+
         }
     }
 

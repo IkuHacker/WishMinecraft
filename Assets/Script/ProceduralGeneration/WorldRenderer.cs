@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,7 +19,7 @@ public class WorldRenderer : MonoBehaviour
     internal ChunkRenderer RenderChunk(WorldData worldData, Vector3Int position, MeshData meshData)
     {
         ChunkRenderer newChunk = null;
-        if(chunkPool.Count > 0)
+        if (chunkPool.Count > 0)
         {
             newChunk = chunkPool.Dequeue();
             newChunk.transform.position = position;

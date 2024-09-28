@@ -154,6 +154,8 @@ MonoBehaviour:
   maxRotationAngleX: 90
   mouseSensitivity: 2
   cameraTransform: {fileID: 4114322067822704724}
+  inventoryManager: {fileID: 0}
+  isInventoryOpen: 0
 --- !u!1 &7168283873460702690
 GameObject:
   m_ObjectHideFlags: 0
@@ -404,7 +406,11 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 64
+  currentBlockMine: 0
+  mineParticle: {fileID: 0}
   inventory: {fileID: 0}
+  inventoryManager: {fileID: 0}
+  isInventoryOpen: 0
   world: {fileID: 0}
 --- !u!1 &8385439055219470911
 GameObject:

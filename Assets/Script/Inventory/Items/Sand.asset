@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Sand
   description: A block
-  visual: {fileID: -1168199002, guid: b1eb15da7f658084d9084601d942812e, type: 3}
+  visual: {fileID: -802899496, guid: 66810e3017105954eafd6f605e32397c, type: 3}
+  visualOfParticle: {fileID: 2800000, guid: 80c2f3101d081cb4787bed8bcf8cf838, type: 3}
   isABlock: 1
   blocs: 12
   stackable: 1

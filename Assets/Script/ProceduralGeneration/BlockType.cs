@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public enum BlockType
 {
     Nothing,
@@ -16,5 +12,6 @@ public enum BlockType
     TreeLeafesTransparent,
     TreeLeafsSolid,
     Water,
-    Sand
+    Sand,
+    Fake_Bedrock,
 }

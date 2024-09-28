@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMineBuild : MonoBehaviour
@@ -11,8 +9,9 @@ public class PlayerMineBuild : MonoBehaviour
     public LayerMask groundMask;
     public BlockType currentBlockMine;
     public ParticleSystem mineParticle;
-    public Inventory inventory;
-
+    public HotBarManager inventory;
+    public InventoryManager inventoryManager;
+    public bool isInventoryOpen;
     public World world;
 
 
@@ -22,7 +21,9 @@ public class PlayerMineBuild : MonoBehaviour
             mainCamera = Camera.main;
         world = FindObjectOfType<World>();
 
-        inventory = FindObjectOfType<Inventory>();
+        inventory = FindObjectOfType<HotBarManager>();
+        inventoryManager = FindObjectOfType<InventoryManager>();
+
         mineParticle = FindObjectOfType<ParticleSystem>();
 
     }
@@ -30,12 +31,14 @@ public class PlayerMineBuild : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)) 
+        isInventoryOpen = inventoryManager.isInventoryOpen;
+
+        if (Input.GetMouseButtonDown(0) && !isInventoryOpen)
         {
             Mine();
         }
 
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1) && !isInventoryOpen)
         {
             Build();
         }
@@ -57,15 +60,46 @@ public class PlayerMineBuild : MonoBehaviour
     private void PerformMine(RaycastHit hit)
     {
         world.SetBlock(hit, BlockType.Air);
-        if(world.currentBlockMine == BlockType.Bedrock)
+        if (world.currentBlockMine == BlockType.Bedrock)
         {
             world.SetBlock(hit, BlockType.Bedrock);
         }
-        else 
+        else
         {
-            mineParticle.transform.position = hit.point;
-            mineParticle.Play();
+            GameObject mineParticleGameObject = Instantiate(mineParticle.gameObject, hit.point, Quaternion.identity);
+
+            // Récupère le système de particules
+            ParticleSystem particleSystem = mineParticleGameObject.GetComponent<ParticleSystem>();
+
+            // Récupère le module Renderer du système de particules
+            ParticleSystemRenderer particleRenderer = particleSystem.GetComponent<ParticleSystemRenderer>();
+
+            // Trouve l'ItemData correspondant au type de bloc miné
+            ItemData minedBlockItem = FindItemDataForBlockType(world.currentBlockMine);
+
+            // Si un matériau de particule est défini pour ce bloc, l'appliquer
+            if (minedBlockItem != null && minedBlockItem.visualOfParticle != null)
+            {
+                particleRenderer.material.mainTexture = minedBlockItem.visualOfParticle;
+            }
+            // Joue les particules
+            particleSystem.Play();
+
+            Destroy(mineParticleGameObject, 2f);
         }
+    }
+
+
+    private ItemData FindItemDataForBlockType(BlockType blockType)
+    {
+        foreach (var item in inventory.items) // Assuming you have a list of items in your inventory
+        {
+            if (item.isABlock && item.blocs == blockType)
+            {
+                return item;
+            }
+        }
+        return null;
     }
 
     private void Build()
@@ -82,15 +116,15 @@ public class PlayerMineBuild : MonoBehaviour
 
     private void PerformBuild(RaycastHit hit)
     {
-        if (inventory.currentItem.isABlock && inventory.currentItem != null) 
+        if (inventory.currentItem.isABlock && inventory.currentItem != null)
         {
             world.SetBlock(hit, inventory.currentItem.blocs);
         }
-        else 
+        else
         {
             Debug.Log("Ce n'est pas un block vous ne pouvez pas le poser");
         }
-       
+
     }
 
 }

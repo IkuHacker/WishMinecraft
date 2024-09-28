@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovementAdvanced : MonoBehaviour
@@ -178,14 +176,14 @@ public class PlayerMovementAdvanced : MonoBehaviour
         }
     }
 
-  
+
 
     private void AddJumpForce()
     {
         rb.AddForce(new Vector3(0, jumpHeight, 0), ForceMode.Impulse);
     }
 
-    
+
 
     private void OnDrawGizmos()
     {

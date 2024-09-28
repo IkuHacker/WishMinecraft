@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -52,14 +51,14 @@ public class TreeLayerHandler : BlockLayerHandler
     {
         if (chunkData.worldPosition.y < 0)
             return false;
-        if (surfaceHeightNoise < terrainHeightLimit 
+        if (surfaceHeightNoise < terrainHeightLimit
             && chunkData.treeData.treePositions.Contains(new Vector2Int(chunkData.worldPosition.x + x, chunkData.worldPosition.z + z)))
         {
             Vector3Int chunkCoordinates = new Vector3Int(x, surfaceHeightNoise, z);
             BlockType type = Chunk.GetBlockFromChunkCoordinates(chunkData, chunkCoordinates);
             if (type == surfaceBlock)
             {
-                
+
                 Chunk.SetBlock(chunkData, chunkCoordinates, BlockType.Dirt);
                 for (int i = 1; i < 5; i++)
                 {

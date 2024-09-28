@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: GrassDirt
   description: 
-  visual: {fileID: -1175978258, guid: b1eb15da7f658084d9084601d942812e, type: 3}
+  visual: {fileID: -678997091, guid: 66810e3017105954eafd6f605e32397c, type: 3}
+  visualOfParticle: {fileID: 2800000, guid: 64362ce26bc8c874eb01402ad1aab1ff, type: 3}
   isABlock: 1
   blocs: 2
   stackable: 1

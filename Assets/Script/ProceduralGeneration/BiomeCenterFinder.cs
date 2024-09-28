@@ -1,8 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class BiomeCenterFinder 
+public static class BiomeCenterFinder
 {
     public static List<Vector2Int> neighbours8Directions = new List<Vector2Int>
     {
@@ -21,8 +20,8 @@ public static class BiomeCenterFinder
         int biomeLength = drawRange * mapSize;
 
         Vector3Int origin = new Vector3Int(
-            Mathf.RoundToInt(playerPosition.x / biomeLength) * biomeLength, 
-            0, 
+            Mathf.RoundToInt(playerPosition.x / biomeLength) * biomeLength,
+            0,
             Mathf.RoundToInt(playerPosition.z / biomeLength) * biomeLength);
 
         HashSet<Vector3Int> biomCentersTemp = new HashSet<Vector3Int>();

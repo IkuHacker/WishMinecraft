@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 3155798666343089889}
   - component: {fileID: 4610483769472778790}
   - component: {fileID: 7794919234460983764}
-  - component: {fileID: 8405368664907825860}
+  - component: {fileID: 4699852630588553804}
+  - component: {fileID: 2853422503915987250}
   m_Layer: 5
   m_Name: Slot
   m_TagString: Untagged
@@ -77,7 +78,31 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &8405368664907825860
+--- !u!114 &4699852630588553804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7754580026653106182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 4
+  m_StartCorner: 0
+  m_StartAxis: 0
+  m_CellSize: {x: 30, y: 30}
+  m_Spacing: {x: 0, y: 0}
+  m_Constraint: 0
+  m_ConstraintCount: 2
+--- !u!114 &2853422503915987250
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -102,6 +127,7 @@ GameObject:
   - component: {fileID: 159133370874853935}
   - component: {fileID: 8705351055546764886}
   - component: {fileID: 6207598061750218725}
+  - component: {fileID: 8425473837862017833}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -123,10 +149,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 3155798666343089889}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.22123718, y: -0.1300124}
-  m_SizeDelta: {x: 32.2875, y: 33.4453}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8705351055546764886
 CanvasRenderer:
@@ -166,3 +192,17 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8425473837862017833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8278763736041947551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53a7b8ab166764b40b7009a67219f0af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 6207598061750218725}
+  parentAfterDrag: {fileID: 0}
