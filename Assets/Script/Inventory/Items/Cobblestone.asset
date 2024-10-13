@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c4fc419278e180469a82c114e2875f7, type: 3}
+  m_Name: Cobblestone
+  m_EditorClassIdentifier: 
+  itemName: Cobblestone
+  description: 
+  visual: {fileID: 21300000, guid: 9ddb4c8fe57bee445adbf696b57956e0, type: 3}
+  visualOfParticle: {fileID: 2800000, guid: 2b8be251bca1ee04eb4ab701f9186c7e, type: 3}
+  isABlock: 1
+  blocs: 15
+  stackable: 1
+  maxStack: 64
+  type: 0

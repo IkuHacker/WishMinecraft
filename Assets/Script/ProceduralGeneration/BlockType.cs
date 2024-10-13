@@ -14,4 +14,8 @@ public enum BlockType
     Water,
     Sand,
     Fake_Bedrock,
+    Snow,
+    Cobblestone,
+    Plank,
+    CraftingTable,
 }

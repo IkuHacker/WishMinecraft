@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Stone
   description: A block
-  visual: {fileID: -234032034, guid: 66810e3017105954eafd6f605e32397c, type: 3}
+  visual: {fileID: 21300000, guid: a5f0dbb2540ef714da7cd70e6f7adeac, type: 3}
   visualOfParticle: {fileID: 2800000, guid: ba5aacbbb58d1754fbd613805b1884e8, type: 3}
   isABlock: 1
   blocs: 6
   stackable: 1
   maxStack: 64
+  type: 0

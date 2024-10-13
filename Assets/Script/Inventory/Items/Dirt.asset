@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Dirt
   description: A block
-  visual: {fileID: -1026578917, guid: 66810e3017105954eafd6f605e32397c, type: 3}
+  visual: {fileID: 21300000, guid: 8be2b38551b62b5498fc03a232690557, type: 3}
   visualOfParticle: {fileID: 2800000, guid: 64362ce26bc8c874eb01402ad1aab1ff, type: 3}
   isABlock: 1
   blocs: 4
   stackable: 1
-  maxStack: 5
+  maxStack: 64
   type: 0

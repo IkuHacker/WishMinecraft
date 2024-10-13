@@ -61,11 +61,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 180116896433007263}
   countText: {fileID: 8155605728249948500}
-  inventoryItems: []
   parentAfterDrag: {fileID: 0}
   count: 1
   item: {fileID: 0}
-  isItemKipe: 0
 --- !u!114 &180116896433007263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86,7 +84,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 8be2b38551b62b5498fc03a232690557, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -130,7 +128,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 25.2, y: -11.8}
+  m_AnchoredPosition: {x: 21.7, y: -11.8}
   m_SizeDelta: {x: 191.3176, y: 77.4054}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3424785569816818288
@@ -162,7 +160,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 40898fe139886fa479c700530962715b, type: 3}
     m_FontSize: 100
     m_FontStyle: 0
     m_BestFit: 1

@@ -29,7 +29,7 @@ public class FirstPersonCamera : MonoBehaviour
     {
         isInventoryOpen = inventoryManager.isInventoryOpen;
 
-        if (!isInventoryOpen) 
+        if (!isInventoryOpen && !BlockUtilityManager.instance.IsAnyPanelOpen()) 
         {
             cameraTurn.y += Input.GetAxisRaw("Mouse X") * mouseSensitivity;
 
@@ -37,7 +37,7 @@ public class FirstPersonCamera : MonoBehaviour
             cameraTurn.x = Mathf.Clamp(cameraTurn.x, -maxRotationAngleX, maxRotationAngleX);
 
 
-            cameraTransform.localRotation = Quaternion.Euler(cameraTurn.x, -cameraTurn.y, 0f);
+            cameraTransform.localRotation = Quaternion.Euler(cameraTurn.x, 0f, 0f);
 
             player.localRotation = Quaternion.Euler(0f, -cameraTurn.y, 0f);
         }

@@ -13,13 +13,25 @@ public class PlayerMineBuild : MonoBehaviour
     public InventoryManager inventoryManager;
     public bool isInventoryOpen;
     public World world;
+    public BlockType curentBlockBuild;
+    public GameManager gameManager;
+    public Vector3 blockposition;
+
+    public GameObject uttilityPanel;
+    public ChunkRenderer currentChunk;
+
+
 
 
     void Start()
     {
         if (mainCamera == null)
-            mainCamera = Camera.main;
+            mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+
         world = FindObjectOfType<World>();
+
+        gameManager = FindObjectOfType<GameManager>();
+
 
         inventory = FindObjectOfType<HotBarManager>();
         inventoryManager = FindObjectOfType<InventoryManager>();
@@ -33,6 +45,18 @@ public class PlayerMineBuild : MonoBehaviour
     {
         isInventoryOpen = inventoryManager.isInventoryOpen;
 
+        Ray playerRay = new Ray(mainCamera.transform.position, mainCamera.transform.forward);
+        RaycastHit hit;
+        if (Physics.Raycast(playerRay, out hit, groundMask))
+        {
+            blockposition = hit.point;
+        }
+
+        VisualizeRaycast();
+        DebugPlayerChunk();
+        curentBlockBuild = world.GetBlockFromChunkCoordinates(currentChunk.ChunkData, Mathf.RoundToInt(blockposition.x), Mathf.RoundToInt(blockposition.y), Mathf.RoundToInt(blockposition.z));
+
+
         if (Input.GetMouseButtonDown(0) && !isInventoryOpen)
         {
             Mine();
@@ -42,7 +66,33 @@ public class PlayerMineBuild : MonoBehaviour
         {
             Build();
         }
+
+
+        if(Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Escape)) 
+        {
+            CloseAllWindows();
+        }
+
+      
+
     }
+
+    private void VisualizeRaycast()
+    {
+        Ray playerRay = new Ray(mainCamera.transform.position, mainCamera.transform.forward);
+        RaycastHit hit;
+
+        // Dessine une ligne rouge pour le raycast
+        if (Physics.Raycast(playerRay, out hit, mineRayLength, groundMask))
+        {
+            Debug.DrawLine(mainCamera.transform.position, hit.point, Color.red, 0.1f);
+        }
+        else
+        {
+            Debug.DrawLine(mainCamera.transform.position, mainCamera.transform.position + mainCamera.transform.forward * mineRayLength, Color.red, 0.1f);
+        }
+    }
+
 
     private void Mine()
     {
@@ -109,22 +159,77 @@ public class PlayerMineBuild : MonoBehaviour
         if (Physics.Raycast(playerRay, out hit, mineRayLength, groundMask) && inventory.currentItem != null)
         {
             hit.point = hit.point + hit.normal * 0.5f;
-            PerformBuild(hit);
         }
+
+        PerformBuild(hit);
+
+        curentBlockBuild = world.GetBlockFromChunkCoordinates(currentChunk.ChunkData, Mathf.RoundToInt(blockposition.x), Mathf.RoundToInt(blockposition.y), Mathf.RoundToInt(blockposition.z));
 
     }
 
     private void PerformBuild(RaycastHit hit)
     {
+        Debug.Log("Build");
         if (inventory.currentItem.isABlock && inventory.currentItem != null)
         {
             world.SetBlock(hit, inventory.currentItem.blocs);
+            Debug.Log(FindItemDataForBlockType(curentBlockBuild).isAnUttilityBlock);
+        }
+
+        Debug.Log(FindItemDataForBlockType(curentBlockBuild).isAnUttilityBlock);
+
+        if (FindItemDataForBlockType(curentBlockBuild).isAnUttilityBlock)
+        {
+            world.SetBlock(hit, BlockType.Air);
+
+            foreach (UttilityBlock utility in BlockUtilityManager.instance.uttilityBlock)
+            {
+                if (curentBlockBuild == utility.block)
+                {
+                    // Trouvé, on ouvre le panel associé
+                    uttilityPanel = utility.panel; // Active le panel de l'utility block
+                    utility.panel.SetActive(true);
+                    Debug.Log($"Panel pour {utility.blockUtility} ouvert.");
+                    return; // Sort de la fonction une fois le bloc trouvé
+                }
+
+                curentBlockBuild = utility.block;
+
+            }
+
+            Debug.LogWarning("Bloc utilitaire non trouvé dans la liste.");
+
+
         }
         else
         {
-            Debug.Log("Ce n'est pas un block vous ne pouvez pas le poser");
+            Debug.Log("Ce n'est pas un block, vous ne pouvez pas le poser.");
         }
+
 
     }
 
+    public void CloseAllWindows() 
+    {
+        foreach (UttilityBlock utility in BlockUtilityManager.instance.uttilityBlock)
+        {
+           
+            utility.panel.SetActive(false);
+            
+        }
+    }
+
+    public void DebugPlayerChunk()
+    {
+        foreach (GameObject chunk in GameObject.FindGameObjectsWithTag("Ground"))
+        {
+            // Vérifie si les coordonnées du chunk correspondent à currentPlayerChunkPosition
+            if (chunk.transform.position == gameManager.currentPlayerChunkPosition)
+            {
+                currentChunk = chunk.GetComponent<ChunkRenderer>();
+                return; // On sort de la boucle une fois qu'on a trouvé le chunk
+            }
+        }
+
+    }
 }

@@ -15,7 +15,9 @@ public class ItemData : ScriptableObject
     [Header("Block")]
     public bool isABlock;
     public BlockType blocs;
+    public bool isAnUttilityBlock;
 
+    [Header("Stackable")]
     public bool stackable;
     public int maxStack;
 
